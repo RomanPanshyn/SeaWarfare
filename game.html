@@ -1,0 +1,725 @@
+<!--Copyright (c) Roman Panshyn 2015-2016-->
+<!--background-color:rgb(0,177,227);-->
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Game</title>
+  <style>
+  body{
+   background-color:rgb(0,175,224);
+   <!--cursor: url(illum-circle-plex.cur), pointer;-->
+  }
+  </style>
+  </head>
+<body> 
+<script language="JavaScript">
+var shotTime = 0
+var shotT = 0
+var shotL = 0
+var positionTop = 0
+var positionLeft = 0
+var esminets3T = 0
+var esminets3L = 0
+var esminets3Hit = false
+var esminets4T = 0
+var esminets4L = 0
+var esminets4Hit = false
+var avianosets1T = 0
+var avianosets1L = 0
+var avianosets1Hit = false
+var tow1T = 0
+var tow1L = 0
+var tow1Hit = false
+var tow2T = 0
+var tow2L = 0
+var tow2Hit = false
+var tow3T = 0
+var tow3L = 0
+var tow3Hit = false
+var tow4T = 0
+var tow4L = 0
+var tow4Hit = false
+var tow5T = 0
+var tow5L = 0
+var tow5Hit = false
+var tow6T = 0
+var tow6L = 0
+var tow6Hit = false
+var tow7T = 0
+var tow7L = 0
+var tow7Hit = false
+var tow8T = 0
+var tow8L = 0
+var tow8Hit = false
+var tow9T = 0
+var tow9L = 0
+var tow9Hit = false
+var tow10T = 0
+var tow10L = 0
+var tow10Hit = false
+var tow11T = 0
+var tow11L = 0
+var tow11Hit = false
+var tow12T = 0
+var tow12L = 0
+var tow12Hit = false
+var interval
+
+addEventListener("keydown", function(event){
+positionTop = document.getElementById("yamato2").style.top
+positionTop = positionTop.slice(0,-2)
+positionLeft = document.getElementById("yamato2").style.left
+positionLeft = positionLeft.slice(0,-2) 
+
+esminets3T = document.getElementById("esminets3").style.top
+esminets3T = esminets3T.slice(0,-2)
+esminets3L = document.getElementById("esminets3").style.left
+esminets3L = esminets3L.slice(0,-2)
+
+esminets4T = document.getElementById("esminets4").style.top
+esminets4T = esminets4T.slice(0,-2)
+esminets4L = document.getElementById("esminets4").style.left
+esminets4L = esminets4L.slice(0,-2)
+
+avianosets1T = document.getElementById("avianosets1").style.top
+avianosets1T = avianosets1T.slice(0,-2)
+avianosets1L = document.getElementById("avianosets1").style.left
+avianosets1L = avianosets1L.slice(0,-2)
+
+tow1T = document.getElementById("tower1").style.top
+tow1T = tow1T.slice(0,-2)
+tow1L = document.getElementById("tower1").style.left
+tow1L = tow1L.slice(0,-2)
+
+tow2T = document.getElementById("tower2").style.top
+tow2T = tow2T.slice(0,-2)
+tow2L = document.getElementById("tower2").style.left
+tow2L = tow2L.slice(0,-2)
+
+tow3T = document.getElementById("tower3").style.top
+tow3T = tow3T.slice(0,-2)
+tow3L = document.getElementById("tower3").style.left
+tow3L = tow3L.slice(0,-2)
+
+tow4T = document.getElementById("tower4").style.top
+tow4T = tow4T.slice(0,-2)
+tow4L = document.getElementById("tower4").style.left
+tow4L = tow4L.slice(0,-2)
+
+tow5T = document.getElementById("tower5").style.top
+tow5T = tow5T.slice(0,-2)
+tow5L = document.getElementById("tower5").style.left
+tow5L = tow5L.slice(0,-2)
+
+tow6T = document.getElementById("tower6").style.top
+tow6T = tow6T.slice(0,-2)
+tow6L = document.getElementById("tower6").style.left
+tow6L = tow6L.slice(0,-2)
+
+tow7T = document.getElementById("tower7").style.top
+tow7T = tow7T.slice(0,-2)
+tow7L = document.getElementById("tower7").style.left
+tow7L = tow7L.slice(0,-2)
+
+tow8T = document.getElementById("tower8").style.top
+tow8T = tow8T.slice(0,-2)
+tow8L = document.getElementById("tower8").style.left
+tow8L = tow8L.slice(0,-2)
+
+tow9T = document.getElementById("tower9").style.top
+tow9T = tow9T.slice(0,-2)
+tow9L = document.getElementById("tower9").style.left
+tow9L = tow9L.slice(0,-2)
+
+tow10T = document.getElementById("tower10").style.top
+tow10T = tow10T.slice(0,-2)
+tow10L = document.getElementById("tower10").style.left
+tow10L = tow10L.slice(0,-2)
+
+tow11T = document.getElementById("tower11").style.top
+tow11T = tow11T.slice(0,-2)
+tow11L = document.getElementById("tower11").style.left
+tow11L = tow11L.slice(0,-2)
+
+tow12T = document.getElementById("tower12").style.top
+tow12T = tow12T.slice(0,-2)
+tow12L = document.getElementById("tower12").style.left
+tow12L = tow12L.slice(0,-2)
+
+shotT = positionTop
+shotL = positionLeft
+shotL=parseInt(shotL)+65
+ 
+ if (event.keyCode == 13){ //enter
+   if (shotTime ==0) {  
+    if (esminets3Hit == true && esminets4Hit == true && avianosets1Hit == true){
+	 restoreAll()
+	}
+	if (tow1Hit == true){
+	 document.getElementById("tower1").style.visibility="hidden"
+	}
+	if (tow2Hit == true){
+	 document.getElementById("tower2").style.visibility="hidden"
+	}
+	if (tow3Hit == true){
+	 document.getElementById("tower3").style.visibility="hidden"
+	}
+	if (tow4Hit == true){
+	 document.getElementById("tower4").style.visibility="hidden"
+	}
+	if (tow5Hit == true){
+	 document.getElementById("tower5").style.visibility="hidden"
+	}
+	if (tow6Hit == true){
+	 document.getElementById("tower6").style.visibility="hidden"
+	}
+	if (tow7Hit == true){
+	 document.getElementById("tower7").style.visibility="hidden"
+	}
+	if (tow8Hit == true){
+	 document.getElementById("tower8").style.visibility="hidden"
+	}
+	if (tow9Hit == true){
+	 document.getElementById("tower9").style.visibility="hidden"
+	}
+	if (tow10Hit == true){
+	 document.getElementById("tower10").style.visibility="hidden"
+	}
+	if (tow11Hit == true){
+	 document.getElementById("tower11").style.visibility="hidden"
+	}
+	if (tow12Hit == true){
+	 document.getElementById("tower12").style.visibility="hidden"
+	}
+	interval = setInterval("fire()",20)	
+	}
+  }
+ if (event.keyCode == 37){ //left arrow      
+  //document.getElementById("yamato21").style.transform = "rotate("+angle+"deg)" 
+  startGame(positionTop,positionLeft,0,-10)
+  }
+ if (event.keyCode == 38){ //up arrow  
+  startGame(positionTop,positionLeft,10,0)
+  }
+ if (event.keyCode == 39){ //right arrow
+  startGame(positionTop,positionLeft,0,10)
+  }
+ if (event.keyCode == 40){ //down arrow
+  startGame(positionTop,positionLeft,-10,0)
+  } 
+ });
+function restoreAll(){
+ esminets3Restore()
+ esminets4Restore()
+ avianosets1Restore()
+ tow1Restore()
+ tow2Restore()
+ tow3Restore()
+ tow4Restore()
+ tow5Restore()
+ tow6Restore()
+ tow7Restore()
+ tow8Restore()
+ tow9Restore()
+ tow10Restore()
+ tow11Restore()
+ tow12Restore()
+} 
+ 
+function fire(){
+  if (shotTime==0){      
+   document.getElementById("shot").style.top=shotT+"px"
+   document.getElementById("shot").style.left=shotL+"px"
+   document.getElementById("shot").style.visibility="visible"
+   shotT-=5
+   shotTime++;
+   }
+  if (shotTime>0 && shotT>=20){  
+   document.getElementById("shot").style.top=shotT+"px"
+   document.getElementById("shot").style.left=shotL+"px"
+   shotT-=5
+   shotTime++;
+    if (Math.abs(shotT - esminets3T) < 100 && Math.abs(shotL - (parseInt(esminets3L) + 71)) < 30 ){
+	  if (esminets3Hit == false){	  
+	   esminets3Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - esminets4T) < 100 && Math.abs(shotL - (parseInt(esminets4L) + 71)) < 30 ){      
+	  if (esminets4Hit == false){	  
+	   esminets4Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - avianosets1T) < 100 && Math.abs(shotL - (parseInt(avianosets1L)+71)) < 40 ){  
+	  if (avianosets1Hit == false){	  
+	   avianosets1Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow1T) < 50 && Math.abs(shotL - (parseInt(tow1L)+20)) < 20 && document.getElementById("tower1").style.visibility=="visible"){  
+	  if (tow1Hit == false){	  
+	   tow1Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow2T) < 50 && Math.abs(shotL - (parseInt(tow2L)+20)) < 20 && document.getElementById("tower2").style.visibility=="visible"){  
+	  if (tow2Hit == false){	  
+	   tow2Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow3T) < 50 && Math.abs(shotL - (parseInt(tow3L)+20)) < 20 && document.getElementById("tower3").style.visibility=="visible"){  
+	  if (tow3Hit == false){	  
+	   tow3Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow4T) < 50 && Math.abs(shotL - (parseInt(tow4L)+20)) < 20 && document.getElementById("tower4").style.visibility=="visible"){  
+	  if (tow4Hit == false){	  
+	   tow4Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow5T) < 50 && Math.abs(shotL - (parseInt(tow5L)+20)) < 20 && document.getElementById("tower5").style.visibility=="visible"){  
+	  if (tow5Hit == false){	  
+	   tow5Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow6T) < 50 && Math.abs(shotL - (parseInt(tow6L)+20)) < 20 && document.getElementById("tower6").style.visibility=="visible"){  
+	  if (tow6Hit == false){	  
+	   tow6Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow7T) < 50 && Math.abs(shotL - (parseInt(tow7L)+20)) < 20 && document.getElementById("tower7").style.visibility=="visible"){  
+	  if (tow7Hit == false){	  
+	   tow7Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow8T) < 50 && Math.abs(shotL - (parseInt(tow8L)+20)) < 20 && document.getElementById("tower8").style.visibility=="visible"){  
+	  if (tow8Hit == false){	  
+	   tow8Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow9T) < 50 && Math.abs(shotL - (parseInt(tow9L)+20)) < 20 && document.getElementById("tower9").style.visibility=="visible"){  
+	  if (tow9Hit == false){	  
+	   tow9Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow10T) < 50 && Math.abs(shotL - (parseInt(tow10L)+20)) < 20 && document.getElementById("tower10").style.visibility=="visible"){  
+	  if (tow10Hit == false){	  
+	   tow10Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow11T) < 50 && Math.abs(shotL - (parseInt(tow11L)+20)) < 20 && document.getElementById("tower11").style.visibility=="visible"){  
+	  if (tow11Hit == false){	  
+	   tow11Fired()
+	  }
+	  clearShot();
+	}
+	if (Math.abs(shotT - tow12T) < 50 && Math.abs(shotL - (parseInt(tow12L)+20)) < 20 && document.getElementById("tower12").style.visibility=="visible"){  
+	  if (tow12Hit == false){	  
+	   tow12Fired()
+	  }
+	  clearShot();
+	}
+  }
+  if(shotT<20){
+   document.getElementById("shot").style.top=positionTop+"px"
+   document.getElementById("shot").style.left=parseInt(positionLeft)+65+"px"
+   clearShot() 
+  } 
+}
+function clearShot(){
+ document.getElementById("shot").style.visibility="hidden"
+ shotTime = 0
+ clearInterval(interval)
+}
+function startGame(top, left, topPos, leftPos){ 
+ var t = 0
+ var l = 0 
+ if (top>=500 && top<=670 && left>=20 && left<=800)
+  {
+   t=top-topPos
+   l=parseInt(left)+parseInt(leftPos)
+   document.getElementById("yamato2").style.top=t+"px"
+   document.getElementById("yamato2").style.left=l+"px" 
+  }
+ if (top>670)
+ {
+   t=670
+   document.getElementById("yamato2").style.top=t+"px"   
+ }
+ if (top<500)
+ {
+   t=500
+   document.getElementById("yamato2").style.top=t+"px"   
+ }
+ if (left>800)
+ {
+   l=800
+   document.getElementById("yamato2").style.left=l+"px"   
+ }
+ if (left<20)
+ {
+   l=20
+   document.getElementById("yamato2").style.left=l+"px"   
+ }
+// var timer = setTimeout(function(){startGame(t1, pos1)},200)
+}
+/*function yamato2Fired(){
+document.images[0].src="yamato2fired.gif"
+// document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}*/
+// Ships
+function esminets3Fired(){
+ document.images[1].src="esminets3fired.gif"
+ esminets3Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+2
+}
+function esminets3Restore(){
+ document.images[1].src="esminets3.png"
+ esminets3Hit=false
+}
+function avianosets1Fired(){
+ document.images[2].src="avianosets1fired.gif"
+ avianosets1Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+2
+}
+function avianosets1Restore(){
+ document.images[2].src="avianosets1.png"
+ avianosets1Hit=false
+}
+function esminets4Fired(){
+ document.images[3].src="esminets4fired.gif"
+ esminets4Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+2
+}
+function esminets4Restore(){
+ document.images[3].src="esminets4.png"
+ esminets4Hit=false
+}
+// Towers
+function tow1Fired(){
+ document.images[4].src = "fireTower.gif"
+ tow1Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow1Restore(){
+ document.images[4].src = "tower.png"
+ document.getElementById("tower1").style.visibility="visible"
+ tow1Hit=false
+}
+function tow2Fired(){
+ document.images[5].src = "fireTower.gif"
+ tow2Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow2Restore(){
+ document.images[5].src = "tower.png"
+ document.getElementById("tower2").style.visibility="visible"
+ tow2Hit=false
+}
+function tow3Fired(){
+ document.images[6].src = "fireTower.gif"
+ tow3Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow3Restore(){
+ document.images[6].src = "tower.png"
+ document.getElementById("tower3").style.visibility="visible"
+ tow3Hit=false
+}
+function tow4Fired(){
+ document.images[7].src = "fireTower.gif"
+ tow4Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow4Restore(){
+ document.images[7].src = "tower.png"
+ document.getElementById("tower4").style.visibility="visible"
+ tow4Hit=false
+}
+function tow5Fired(){
+ document.images[8].src = "fireTower.gif"
+ tow5Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow5Restore(){
+ document.images[8].src = "tower.png"
+ document.getElementById("tower5").style.visibility="visible"
+ tow5Hit=false
+}
+function tow6Fired(){
+ document.images[9].src = "fireTower.gif"
+ tow6Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow6Restore(){
+ document.images[9].src = "tower.png"
+ document.getElementById("tower6").style.visibility="visible"
+ tow6Hit=false
+}
+function tow7Fired(){
+ document.images[10].src = "fireTower.gif"
+ tow7Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow7Restore(){
+ document.images[10].src = "tower.png"
+ document.getElementById("tower7").style.visibility="visible"
+ tow7Hit=false
+}
+function tow8Fired(){
+ document.images[11].src = "fireTower.gif"
+ tow8Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow8Restore(){
+ document.images[11].src = "tower.png"
+ document.getElementById("tower8").style.visibility="visible"
+ tow8Hit=false
+}
+function tow9Fired(){
+ document.images[12].src = "fireTower.gif"
+ tow9Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow9Restore(){
+ document.images[12].src = "tower.png"
+ document.getElementById("tower9").style.visibility="visible"
+ tow9Hit=false
+}
+function tow10Fired(){
+ document.images[13].src = "fireTower.gif"
+ tow10Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow10Restore(){
+ document.images[13].src = "tower.png"
+ document.getElementById("tower10").style.visibility="visible"
+ tow10Hit=false
+}
+function tow11Fired(){
+ document.images[14].src = "fireTower.gif"
+ tow11Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow11Restore(){
+ document.images[14].src = "tower.png"
+ document.getElementById("tower11").style.visibility="visible"
+ tow11Hit=false
+}
+function tow12Fired(){
+ document.images[15].src = "fireTower.gif"
+ tow12Hit=true
+ document.getElementById("score").innerHTML=Number(document.getElementById("score").innerHTML)+1
+}
+function tow12Restore(){
+ document.images[15].src = "tower.png"
+ document.getElementById("tower12").style.visibility="visible"
+ tow12Hit=false
+}
+
+var timeInSecs;
+var ticker;
+
+function startTimer(secs){
+timeInSecs = parseInt(secs)-1;
+ticker = setInterval("tick()",1000);   // every second
+}
+
+function tick() {
+var secs = timeInSecs;
+if (secs>0) {
+ timeInSecs--;
+}
+else {
+ clearInterval(ticker); // stop counting at zero
+ document.getElementById("resetButton").disabled=false
+ leaderBoard()
+// startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+}
+document.getElementById("countdown").innerHTML = secs;
+}
+function leaderBoard(){
+if (Number(document.getElementById("score").innerHTML)>Number(document.getElementById("leaderScore1").innerHTML)){
+document.getElementById("leaderNickname5").innerHTML=document.getElementById("leaderNickname4").innerHTML
+document.getElementById("leaderScore5").innerHTML=document.getElementById("leaderScore4").innerHTML
+document.getElementById("leaderNickname4").innerHTML=document.getElementById("leaderNickname3").innerHTML
+document.getElementById("leaderScore4").innerHTML=document.getElementById("leaderScore3").innerHTML
+document.getElementById("leaderNickname3").innerHTML=document.getElementById("leaderNickname2").innerHTML
+document.getElementById("leaderScore3").innerHTML=document.getElementById("leaderScore2").innerHTML
+document.getElementById("leaderNickname2").innerHTML=document.getElementById("leaderNickname1").innerHTML
+document.getElementById("leaderScore2").innerHTML=document.getElementById("leaderScore1").innerHTML
+document.getElementById("leaderNickname1").innerHTML=document.getElementById("nickname").value
+document.getElementById("leaderScore1").innerHTML=document.getElementById("score").innerHTML
+return
+}
+if (Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore1").innerHTML) && 
+Number(document.getElementById("score").innerHTML)>Number(document.getElementById("leaderScore2").innerHTML)){
+document.getElementById("leaderNickname5").innerHTML=document.getElementById("leaderNickname4").innerHTML
+document.getElementById("leaderScore5").innerHTML=document.getElementById("leaderScore4").innerHTML
+document.getElementById("leaderNickname4").innerHTML=document.getElementById("leaderNickname3").innerHTML
+document.getElementById("leaderScore4").innerHTML=document.getElementById("leaderScore3").innerHTML
+document.getElementById("leaderNickname3").innerHTML=document.getElementById("leaderNickname2").innerHTML
+document.getElementById("leaderScore3").innerHTML=document.getElementById("leaderScore2").innerHTML
+document.getElementById("leaderNickname2").innerHTML=document.getElementById("nickname").value
+document.getElementById("leaderScore2").innerHTML=document.getElementById("score").innerHTML
+return
+}
+if (Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore1").innerHTML) && 
+Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore2").innerHTML) &&
+Number(document.getElementById("score").innerHTML)>Number(document.getElementById("leaderScore3").innerHTML)){
+document.getElementById("leaderNickname5").innerHTML=document.getElementById("leaderNickname4").innerHTML
+document.getElementById("leaderScore5").innerHTML=document.getElementById("leaderScore4").innerHTML
+document.getElementById("leaderNickname4").innerHTML=document.getElementById("leaderNickname3").innerHTML
+document.getElementById("leaderScore4").innerHTML=document.getElementById("leaderScore3").innerHTML
+document.getElementById("leaderNickname3").innerHTML=document.getElementById("nickname").value
+document.getElementById("leaderScore3").innerHTML=document.getElementById("score").innerHTML
+return
+}
+if (Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore1").innerHTML) &&
+Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore2").innerHTML) &&
+Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore3").innerHTML) &&
+Number(document.getElementById("score").innerHTML)>Number(document.getElementById("leaderScore4").innerHTML)){
+document.getElementById("leaderNickname5").innerHTML=document.getElementById("leaderNickname4").innerHTML
+document.getElementById("leaderScore5").innerHTML=document.getElementById("leaderScore4").innerHTML
+document.getElementById("leaderNickname4").innerHTML=document.getElementById("nickname").value
+document.getElementById("leaderScore4").innerHTML=Number(document.getElementById("score").innerHTML)
+return
+}
+if (Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore1").innerHTML) &&
+Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore2").innerHTML) &&
+Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore3").innerHTML) &&
+Number(document.getElementById("score").innerHTML)<=Number(document.getElementById("leaderScore4").innerHTML) &&
+Number(document.getElementById("score").innerHTML)>Number(document.getElementById("leaderScore5").innerHTML)){
+document.getElementById("leaderNickname5").innerHTML=document.getElementById("nickname").value
+document.getElementById("leaderScore5").innerHTML=document.getElementById("score").innerHTML
+return
+}
+}
+function prepareToStart(secs){
+timeInSecs = parseInt(secs)-1;
+ticker = setInterval("tickBeforeStart()",1000);   // every second
+}
+
+function tickBeforeStart() {
+var secs = timeInSecs;
+if (secs>0) {
+timeInSecs--;
+}
+else {
+clearInterval(ticker); // stop counting at zero
+document.getElementById("score").innerHTML=0
+startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+}
+document.getElementById("prepareCountdown").innerHTML = secs;
+}
+function initial(){
+document.getElementById("startButton").disabled=true
+prepareToStart(5)
+}
+function reset(){
+document.getElementById("resetButton").disabled=true
+document.getElementById("startButton").disabled=false
+document.getElementById("prepareCountdown").innerHTML =5
+document.getElementById("countdown").innerHTML =60
+document.getElementById("score").innerHTML=0
+}
+</script>
+<div style="position:absolute; left:1000px; top:5px">Shoot rockets from battleship!</div>
+<div style="position:absolute; left:955px; top:30px">Use 'Arrows' to move the ship</div>
+<div style="position:absolute; left:955px; top:55px">Use 'Enter' to fire the rocket</div>
+<div style="position:absolute; left:955px; top:80px">Move the ship after firing to correct the shot</div>
+<div style="position:absolute; left:955px; top:105px">After firing wait for the rocket to hit the target</div>
+<div style="position:absolute; left:1000px; top:130px">Good Luck!</div>
+<div style="position:absolute; left:955px; top:155px">Nickname: <input id="nickname" size="5" value="John"> 
+<input id="startButton" type="button" value="Start" onclick="initial()">
+<input id="resetButton" type="button" value="Reset" onclick="reset()" disabled></div>
+<div style="position:absolute; left:955px; top:180px">Prepare:</div>
+<div id="prepareCountdown" style="position:absolute; left:1050px; top:180px">5</div>
+<div style="position:absolute; left:955px; top:205px">Timer:</div>
+<div id="countdown" style="position:absolute; left:1050px; top:205px">60</div>
+<div style="position:absolute; left:955px; top:230px">Score:</div>
+<div id="score" style="position:absolute; left:1050px; top:230px">0</div>
+<div style="position:absolute; left:1000px; top:255px"><b>Leaderboard</b></div>
+<div id="leaderNickname1" style="position:absolute; left:955px; top:280px">Player1</div>
+<div id="leaderScore1" style="position:absolute; left:1050px; top:280px">0</div>
+<div id="leaderNickname2" style="position:absolute; left:955px; top:305px">Player2</div>
+<div id="leaderScore2" style="position:absolute; left:1050px; top:305px">0</div>
+<div id="leaderNickname3" style="position:absolute; left:955px; top:330px">Player3</div>
+<div id="leaderScore3" style="position:absolute; left:1050px; top:330px">0</div>
+<div id="leaderNickname4" style="position:absolute; left:955px; top:355px">Player4</div>
+<div id="leaderScore4" style="position:absolute; left:1050px; top:355px">0</div>
+<div id="leaderNickname5" style="position:absolute; left:955px; top:380px">Player5</div>
+<div id="leaderScore5" style="position:absolute; left:1050px; top:380px">0</div>
+<!--avianosets1, esminets3, esminets4, yamato2, illum-circle-plex-->
+<div id="yamato2" style="position:absolute; left:400px; top:670px">
+ <image src="yamato2.png"/> <!--onclick="yamato2Fired()"--> 
+</div>
+<div id="esminets3" style="position:absolute; left:60px; top:10px; transform:rotate(180deg);">
+<image src="esminets3.png"/> <!--onclick="esminets3Fired()"-->
+</div>
+<div id="avianosets1" style="position:absolute; left:310px; top:10px; transform:rotate(180deg);">
+<image src="avianosets1.png"/> <!--onclick="avianosets1Fired()"-->
+</div>
+<div id="esminets4" style="position:absolute; left:560px; top:10px; transform:rotate(180deg);">
+<image src="esminets4.png"/> <!--onclick="esminets4Fired()"-->
+</div>
+<div id="tower1" style="position:absolute; left:50px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower2" style="position:absolute; left:110px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower3" style="position:absolute; left:170px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower4" style="position:absolute; left:230px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower5" style="position:absolute; left:290px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower6" style="position:absolute; left:350px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower7" style="position:absolute; left:410px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower8" style="position:absolute; left:470px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower9" style="position:absolute; left:530px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower10" style="position:absolute; left:590px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower11" style="position:absolute; left:650px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="tower12" style="position:absolute; left:710px; top:270px; visibility:visible;">
+ <image src="tower.png"/>
+</div>
+<div id="shot" style="position:absolute; left:200px; top:270px; visibility:hidden;">
+ <image src="fireShot.jpg"/>
+</div>
+<div id="fire" style="position:absolute; left:200px; top:270px; visibility:hidden;">
+ <image src="fire.gif"/>
+</div>
+<!--<div style="position:absolute; left:930px; top:235px">
+<a href="http://www.shipsim.com/products/shipsimulatorextremes">Play the real game!</a></div>
+<div style="position:absolute; left:830px; top:255px">
+<iframe width="420" height="315" src="https://www.youtube.com/embed/WVNdF15RZUc">
+</iframe></div> -->
+</body>
+</html>
